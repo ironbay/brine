@@ -1,0 +1,3 @@
+%{
+  "dynamic": {:git, "https://github.com/ironbay/dynamic.git", "895024908f103a2aaf74180b361e19cc6606d2e6", [sparse: "elixir"]},
+}
