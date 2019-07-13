@@ -41,7 +41,7 @@ defmodule Brine do
 
         result
       end)
-      |> Stream.uniq(fn {path, _value} -> path end)
+      |> Stream.uniq_by(fn {path, _value} -> path end)
       |> Enum.map(fn {path, _value} ->
         fun =
           [app | path]
