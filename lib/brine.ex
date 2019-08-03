@@ -75,7 +75,14 @@ defmodule Brine do
         Enum.each(@apps, fn {app, values} ->
           values
           |> Enum.reduce(%{}, fn {path, default}, collect ->
-            Dynamic.put(collect, path, loader.get(app, path) || default)
+            Dynamic.put(
+              collect,
+              path,
+              case loader.get(app, path) do
+                nil -> default
+                result -> result
+              end
+            )
           end)
           |> Enum.each(fn {key, value} ->
             Application.put_env(app, key, value)
