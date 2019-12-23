@@ -46,6 +46,9 @@ defmodule Brine do
         fun =
           [app | path]
           |> Enum.join("_")
+          |> String.downcase()
+          |> String.replace(".", "_")
+          |> String.replace(":", "")
           |> String.to_atom()
 
         case path do

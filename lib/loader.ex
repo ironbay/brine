@@ -10,6 +10,8 @@ defmodule Brine.Loader.Env do
     [app | path]
     |> Enum.join("_")
     |> String.upcase()
+    |> String.replace(":", "")
+    |> String.replace(".", "_")
     |> System.get_env()
     |> case do
       nil ->
